@@ -1,7 +1,6 @@
 package com.fz.controllers;
 
 import com.fz.dao.StudentDao;
-
 import com.fz.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +13,16 @@ import java.util.List;
 @Controller
 public class StudentController {
 
-    @Autowired
-    private StudentDao studentDao;
+
+
+
+private StudentDao studentDao;
+@Autowired
+public void setStudentDao(StudentDao studentDao){
+    this.studentDao  = studentDao;
+}
+
+
 
     @ResponseBody
     @RequestMapping("test")
@@ -31,8 +38,7 @@ public class StudentController {
     @RequestMapping("getStudentAll")
     public List<Student> getStudentAll(){
         System.out.println("查询所有");
-        List<Student> list = studentDao.getStudentAll();
-        return list;
+        return studentDao.getStudentAll();
 
     }
 
